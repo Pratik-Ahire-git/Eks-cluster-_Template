@@ -1,0 +1,19 @@
+---
+- name: Deploy NopCommarce Application
+  become: yes
+  hosts: all
+  tasks:
+    - name: install dotnet and other package
+      ansible.builtin.apt:
+        name: {{ item }}
+        state: present
+        update_cache: yes
+      loop:
+        - dotnet
+        - unzip
+    - name: create user
+      ansible.builtin.user:
+      name: nop 
+      
+    
+
